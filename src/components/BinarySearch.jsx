@@ -11,7 +11,6 @@ function BinarySearchComponent() {
   const [minIndex, setMinIndex] = useState(0); // new state variable
   const [maxIndex, setMaxIndex] = useState(numbers.length - 1); // new state variable
   const [center, setCenter] = useState((minIndex + maxIndex) / 2); // new state variable
-  const [intervalTime, setIntervalTime] = useState(500); // new state variable
   const [selectedIntervalTime, setSelectedIntervalTime] = useState(500);
 
   // Binary search algorithm
@@ -63,21 +62,47 @@ function BinarySearchComponent() {
   }
 
   return (
-    <div>
-      <h1 className="text-center font-bold">Binary Search</h1>
-      <form className="flex" onSubmit={handleSearchSubmit}>
+    <div className="flex flex-col justify-center items-center">
+      <h1 className="text-center font-bold ">Binary Search</h1>
+      <form className="flex mt-1 flex-wrap justify-center" onSubmit={handleSearchSubmit}>
         <label>
           Search for:
           <input
-            className="bg-transparent"
+            className="mx-1 my-2 bg-transparent"
             type="number"
             value={searchValue}
             onChange={handleSearchChange}
             placeholder="enter a number to search for"
           />
         </label>
-        <button type="submit">Search</button>
+        <button className="btn " type="submit">
+          <p>Search</p>
+        </button>
       </form>
+      <label>
+        Interval time:
+        <select
+          className="mx-1 my-2 border rounded-md bg-transparent"
+          value={selectedIntervalTime}
+          onChange={handleIntervalTimeChange}
+        >
+          <option className="text-black" value="1000">
+            1 second
+          </option>
+          <option className="text-black" value="750">
+            750 milliseconds
+          </option>
+          <option className="text-black" value="500">
+            500 milliseconds
+          </option>
+          <option className="text-black" value="250">
+            250 milliseconds
+          </option>
+          <option className="text-black" value="100">
+            100 milliseconds
+          </option>
+        </select>
+      </label>
       {resultIndex >= 0 ? (
         <p>
           Found at index {resultIndex}, took {steps} steps
@@ -85,19 +110,7 @@ function BinarySearchComponent() {
       ) : (
         <p>Not found</p>
       )}
-      <label>
-        Interval time:
-        <select
-          value={selectedIntervalTime}
-          onChange={handleIntervalTimeChange}
-        >
-          <option value="1000">1 second</option>
-          <option value="750">750 milliseconds</option>
-          <option value="500">500 milliseconds</option>
-          <option value="250">250 milliseconds</option>
-          <option value="100">100 milliseconds</option>
-        </select>
-      </label>
+
       <div className="flex flex-wrap justify-center">
         {numbers.map((num, index) => (
           <span

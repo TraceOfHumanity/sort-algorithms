@@ -30,7 +30,7 @@ body{
   display: inline-block;
   padding: 2px;
   margin: 1px;
-  background-color: rgba(0, 128, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(2px);
   border-radius: 50%;
   overflow: hidden;
@@ -41,30 +41,75 @@ body{
   background-color: rgba(255, 0, 0, 0.5);
 }
 .center {
-  
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   transform: scale(1.3);
   z-index: 2;
 }
 input::placeholder {
-  color: red;
+  color: rgb(150, 0, 0);
   font-size: 12px;
 }
 input[type=number] {
   border-radius: 8px;
-  border: 1px solid red;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
 padding: 2px; 
 margin: 2px;
-  /* Styles for the spin buttons (only in WebKit browsers) */
 }
 
 input[type=number]:focus {
-  /* Styles for when the input is in focus */
   border: none;
   box-shadow: inset 0 0 2px red;
+}
+.btn {
+  margin-top: 4px;
+  position: relative;
+  display: block;
+}
+.btn p {
+  padding: 5px 10px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  z-index: 1;
+  font-weight: 500;
+  letter-spacing: 1;
+  text-decoration: none;
+  overflow: hidden;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
+}
+.btn:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 30px;
+  height: 5px;
+  transition: translatex(-50%);
+  bottom: -2px;
+  transition: 0.2s;
+  background: red;
+  transition-delay: 0;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+.btn:hover::before {
+  /* left: 40%; */
+  bottom: 0;
+  height: 50%;
+  width: 30px;
 }
