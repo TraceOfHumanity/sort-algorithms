@@ -1,12 +1,10 @@
-import BinarySearchComponent from "./components/BinarySearch";
-import Canvas from "./components/Canvas";
+import BinarySearch from "./components/BinarySearch";
 
 
 function App() {
   return (
-    <div className="App">
-      {/* <Canvas /> */}
-      <BinarySearchComponent/>
+    <div className="text-white">
+      <BinarySearch/>
     </div>
   );
 }
